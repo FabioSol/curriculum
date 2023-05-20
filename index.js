@@ -1,6 +1,7 @@
 import './style.css'
 import * as THREE from 'three';
 import { Camera } from 'three';
+import space from './icons/space.jpg'
 
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 
@@ -42,7 +43,7 @@ function addStar(){
 }
 
 Array(600).fill().forEach(addStar)
-const spaceTexture = new THREE.TextureLoader().load('icons/space.jpg');
+const spaceTexture = new THREE.TextureLoader().load(space);
 scene.background = spaceTexture;
 
 torus.rotation.x=80
