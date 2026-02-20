@@ -113,7 +113,7 @@ export default function ContactBlock({ label, heading, marqueeItems, links }: Pr
           {/* CTA button */}
           <button
             onClick={() => navigate("/contact")}
-            className="group relative overflow-hidden border border-white/20 px-10 py-4 w-fit"
+            className="group relative overflow-hidden bg-neutral-950 border border-white/20 px-10 py-4 w-fit"
           >
             <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
             <span className="relative font-mono text-xs tracking-[0.3em] uppercase text-white group-hover:text-neutral-950 transition-colors duration-500">

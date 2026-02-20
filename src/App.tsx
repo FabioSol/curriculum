@@ -1,21 +1,24 @@
-import { useState } from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { lazy, Suspense, useState } from "react"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import Loader from "@/components/layout/Loader"
 import PageWrapper from "@/components/layout/PageWrapper"
 import Home from "@/pages/Home"
-import Work from "@/pages/Work"
-import Academy from "@/pages/Academy"
-import About from "@/pages/About"
-import Contact from "@/pages/Contact"
 
-export default function App() {
+const Work = lazy(() => import("@/pages/Work"))
+const Academy = lazy(() => import("@/pages/Academy"))
+const About = lazy(() => import("@/pages/About"))
+const Contact = lazy(() => import("@/pages/Contact"))
+
+function AppRoutes() {
+  const { pathname } = useLocation()
   const [loaded, setLoaded] = useState(false)
+  const isHome = pathname === "/"
 
   return (
     <>
-      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
+      {isHome && !loaded && <Loader onComplete={() => setLoaded(true)} />}
 
-      <BrowserRouter>
+      <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route element={<PageWrapper />}>
@@ -25,7 +28,15 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Suspense>
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }

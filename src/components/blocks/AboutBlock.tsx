@@ -8,10 +8,10 @@ import {
   ScrollVelocityContainer,
   ScrollVelocityRow,
 } from "@/components/ui/scroll-based-velocity"
-import img1 from "@/assets/images/about/img_1.png"
-import img2 from "@/assets/images/about/img_2.png"
-import img3 from "@/assets/images/about/img_3.png"
-import img4 from "@/assets/images/about/img_4.png"
+import img1 from "@/assets/images/about/img_1.webp"
+import img2 from "@/assets/images/about/img_2.webp"
+import img3 from "@/assets/images/about/img_3.webp"
+import img4 from "@/assets/images/about/img_4.webp"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -130,7 +130,7 @@ export default function AboutBlock({ label, title, description }: Props) {
           <div ref={rowARef}>
             <ScrollVelocityRow baseVelocity={3} direction={1} className="py-2">
               {ROW_A.map((src, i) => (
-                <Tilt key={i} rotationFactor={8} springOptions={{ stiffness: 120, damping: 20 }}>
+                <Tilt key={i} rotationFactor={20} springOptions={{ stiffness: 80, damping: 15 }}>
                   <img
                     src={src}
                     alt=""
@@ -145,7 +145,7 @@ export default function AboutBlock({ label, title, description }: Props) {
           <div ref={rowBRef}>
             <ScrollVelocityRow baseVelocity={3} direction={-1} className="py-2">
               {ROW_B.map((src, i) => (
-                <Tilt key={i} rotationFactor={8} springOptions={{ stiffness: 120, damping: 20 }}>
+                <Tilt key={i} rotationFactor={20} springOptions={{ stiffness: 80, damping: 15 }}>
                   <img
                     src={src}
                     alt=""
@@ -168,19 +168,17 @@ export default function AboutBlock({ label, title, description }: Props) {
         <div className="md:hidden pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-transparent" />
       </div>
 
-      {/* Header — desktop only in normal flow */}
-      <div onClick={() => navigate("/about")} className="hidden md:block px-8 md:px-20 mb-8 md:mb-12 cursor-pointer">
-        <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase mb-8">
-          {label}
-        </p>
-        <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-white max-w-3xl">
-          {title}
-        </h2>
-      </div>
-
-      {/* Bio text — desktop only in normal flow */}
-      <div onClick={() => navigate("/about")} className="hidden md:block px-8 md:px-20 mt-8 md:mt-12 max-w-2xl cursor-pointer">
-        <p className="text-white/50 text-sm md:text-base leading-relaxed">
+      {/* Header + bio — desktop only, side by side */}
+      <div onClick={() => navigate("/about")} className="hidden md:flex flex-row items-start gap-10 lg:gap-16 px-8 md:px-20 mb-8 md:mb-12 cursor-pointer">
+        <div className="shrink-0">
+          <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase mb-8">
+            {label}
+          </p>
+          <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-white">
+            {title}
+          </h2>
+        </div>
+        <p className="text-white/50 text-sm md:text-base leading-relaxed pt-1 md:pt-2 max-w-sm">
           {description}
         </p>
       </div>

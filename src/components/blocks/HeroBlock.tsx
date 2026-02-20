@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import meImage from "@/assets/images/me.png"
+import meImage from "@/assets/images/me.webp"
 import { DitherShader } from "@/components/ui/dither-shader"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -54,10 +54,10 @@ export default function HeroBlock({ label, name, descriptor, scrollCue }: Props)
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-neutral-950/20 md:via-neutral-950/60 md:to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end md:justify-start min-h-screen px-8 md:px-20 pt-0 md:pt-32 pb-16 md:pb-28">
+      <div className="relative z-10 flex flex-col justify-end md:justify-start min-h-screen px-6 sm:px-10 md:px-16 lg:px-20 pt-0 md:pt-32 pb-16 sm:pb-20 md:pb-28">
 
         {/* Label */}
-        <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase md:mb-10 mb-1">
+        <p className="label text-white/30 md:mb-10 mb-1">
           {label}
         </p>
 

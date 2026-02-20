@@ -20,6 +20,15 @@ export default function Loader({ onComplete, minDuration = 2800 }: LoaderProps) 
   const [secondDone, setSecondDone] = useState(false)
   const exitTriggered = useRef(false)
 
+  // Scroll to top and lock scroll for the duration of the loader
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [])
+
   // Trigger firstDone after name finishes typing
   useEffect(() => {
     const nameDuration = NAME.length * NAME_SPEED
@@ -48,6 +57,8 @@ export default function Loader({ onComplete, minDuration = 2800 }: LoaderProps) 
     const t = setTimeout(() => {
       if (exitTriggered.current) return
       exitTriggered.current = true
+
+      document.body.style.overflow = ""
 
       const tl = gsap.timeline({ onComplete })
       tl.to(lineRef.current, {

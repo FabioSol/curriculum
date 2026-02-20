@@ -155,3 +155,25 @@ button:focus-visible {
     }
   }
 }
+
+@layer components {
+  /* Section label — e.g. "001 / Portfolio" */
+  .label {
+    @apply font-mono text-[10px] tracking-[0.3em] uppercase;
+  }
+
+  /* Primary block heading — clamp for responsive sizing */
+  .heading-block {
+    @apply text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight;
+  }
+
+  /* Body text — small, relaxed line height */
+  .body-sm {
+    @apply text-sm leading-relaxed;
+  }
+
+  /* Consistent horizontal padding + vertical breathing room across all blocks */
+  .block-content {
+    @apply px-6 sm:px-10 md:px-16 lg:px-20 py-16 sm:py-20 md:py-24;
+  }
+}

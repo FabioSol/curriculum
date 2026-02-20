@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-import imgLandscape from "@/assets/images/academy/landscape-academy.png"
-import imgPortrait from "@/assets/images/academy/portrait-academy.png"
+import imgLandscape from "@/assets/images/academy/landscape-academy.webp"
+import imgPortrait from "@/assets/images/academy/portrait-academy.webp"
 
 const GAP = 40 // px, matches gap-10
 
@@ -28,6 +28,8 @@ export default function AcademyBlock({ label, title, description }: Props) {
   const sectionRef = useRef<HTMLElement>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
   const imagesRef = useRef<HTMLDivElement[]>([])
+  const cardInnerRef = useRef<HTMLDivElement | null>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
     const section = sectionRef.current
@@ -40,8 +42,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
         start: "top top",
         end: "+=150%",
         pin: true,
-        scrub: true,
-        anticipatePin: 1,
+        scrub: 1,
       })
     }
 
@@ -74,18 +75,35 @@ export default function AcademyBlock({ label, title, description }: Props) {
 
     // Parallax — desktop only, scrubs through the pinned scroll space
     if (window.innerWidth >= 768) {
-      imagesRef.current.forEach((img) => {
+      const cardHeight = cardInnerRef.current?.offsetHeight ?? 400
+      const gap = gridRef.current
+        ? parseFloat(getComputedStyle(gridRef.current).gap) || 40
+        : 40
+      const travel = Math.round(cardHeight * 0.35)
+
+      imagesRef.current.forEach((img, i) => {
         if (!img) return
+
+        const leftOffset = i === 0
+          ? "0px"
+          : `calc(${i * -100}% - ${i * gap}px)`
+
+        gsap.set(img, {
+          height: cardHeight + travel * 2,
+          top: -travel,
+          left: leftOffset,
+        })
+
         gsap.fromTo(img,
-          { y: 230 },
+          { y: travel },
           {
-            y: -230,
+            y: -travel,
             ease: "none",
             scrollTrigger: {
               trigger: section,
               start: "top top",
               end: "+=150%",
-              scrub: true,
+              scrub: 1,
             },
           }
         )
@@ -96,7 +114,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-neutral-950 h-auto md:h-screen flex flex-col justify-center px-8 md:px-20 py-24 md:py-0"
+      className="relative bg-neutral-950 h-auto md:h-[100dvh] flex flex-col justify-center px-8 md:px-20 py-24 md:py-0"
     >
       {/* Label — top left */}
       <div className="mt-8 md:mt-12 mb-4">
@@ -116,7 +134,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
       </div>
 
       {/* Cards — top */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 flex-1">
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 flex-1">
         {CARDS.map((card, i) => (
           <div
             key={i}
@@ -124,7 +142,10 @@ export default function AcademyBlock({ label, title, description }: Props) {
             onClick={() => navigate("/academy")}
             className="cursor-pointer"
           >
-            <div className="relative aspect-[5/2] md:aspect-[5/5] rounded-sm overflow-hidden bg-white/[0.04] border border-white/[0.06]">
+            <div
+              ref={i === 0 ? cardInnerRef : undefined}
+              className="relative aspect-[5/2] md:aspect-[5/5] rounded-sm overflow-hidden bg-white/[0.04] border border-white/[0.06]"
+            >
 
               {/* Mobile: fixed portrait background — feels static as cards scroll over it */}
               <div className="md:hidden absolute inset-0" style={{
@@ -135,16 +156,13 @@ export default function AcademyBlock({ label, title, description }: Props) {
                 backgroundRepeat: "no-repeat",
               }} />
 
-              {/* Desktop: landscape triptych with parallax */}
+              {/* Desktop: landscape triptych with parallax — height/top/left set by GSAP */}
               <div
                 ref={(el) => { if (el) imagesRef.current[i] = el }}
                 className="hidden md:block"
                 style={{
                   position: "absolute",
                   width: `calc(300% + ${GAP * 2}px)`,
-                  height: "calc(100% + 460px)",
-                  top: "-230px",
-                  left: card.imageLeft,
                   backgroundImage: `url(${imgLandscape})`,
                   backgroundSize: "100% auto",
                   backgroundRepeat: "no-repeat",
