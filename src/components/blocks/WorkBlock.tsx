@@ -8,13 +8,13 @@ import { IconCloud } from "@/components/ui/icon-cloud"
 gsap.registerPlugin(ScrollTrigger)
 
 const TECH_SLUGS = [
-  "python", "go", "r", "javascript", "typescript",
-  "html5", "css3", "react", "nextdotjs", "angular",
-  "tailwindcss", "flask", "fastapi",
-  "hugo", "mongodb", "neo4j", "go",
-  "elasticsearch", "apachekafka", "apachespark",
-  "docker", "opencv", "numpy",
-  "pandas", "matplotlib", "powerbi", "postman",
+  "python", "go", "r", "javascript", "typescript", "threejs",
+  "html5", "react", "vuejs", "angular", "figma", "slack",
+  "tailwindcss", "flask", "fastapi", "digitalocean",
+  "hugo", "mongodb", "neo4j", "go", "aws", "mysql", "postgresql",
+  "elasticsearch", "apachekafka", "apachespark", "mongodb",
+  "docker", "opencv", "numpy", "php", "git", "sqlite",
+  "pandas", "postman", "csharp","cplusplus", "vercel",
 ]
 
 const images = TECH_SLUGS.map(

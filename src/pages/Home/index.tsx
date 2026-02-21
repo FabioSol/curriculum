@@ -20,8 +20,8 @@ export default function Home() {
       />
       <WorkBlock
         label="003 / Work"
-        title="Tools & Technologies."
-        description="A collection of languages, frameworks, and tools I've worked with across data engineering, web development, and quantitative research."
+        title="Professional experience."
+        description="Some of the languages, frameworks, and tools I've worked with across career and personal projects."
       />
       <AcademyBlock
         label="004 / Academy"

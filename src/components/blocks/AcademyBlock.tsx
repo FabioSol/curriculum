@@ -35,7 +35,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
     const section = sectionRef.current
     if (!section) return
 
-    // Pin only on desktop — mobile uses natural scroll for the fixed bg effect
+    // Pin only on desktop
     if (window.innerWidth >= 768) {
       ScrollTrigger.create({
         trigger: section,
@@ -116,15 +116,24 @@ export default function AcademyBlock({ label, title, description }: Props) {
       ref={sectionRef}
       className="relative bg-neutral-950 h-auto md:h-[100dvh] flex flex-col justify-center px-8 md:px-20 py-24 md:py-0"
     >
-      {/* Label — top left */}
-      <div className="mt-8 md:mt-12 mb-4">
+      {/* Mobile: full-bleed portrait background */}
+      <div className="md:hidden absolute inset-0">
+        <img src={imgPortrait} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-neutral-950/20" />
+      </div>
+
+      {/* Label — desktop only, top left */}
+      <div className="relative hidden md:block mt-8 md:mt-12 mb-4">
         <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase">
           {label}
         </p>
       </div>
 
-      {/* Heading — mobile only, top */}
-      <div onClick={() => navigate("/academy")} className="cursor-pointer md:hidden mb-6">
+      {/* Heading — mobile only */}
+      <div onClick={() => navigate("/academy")} className="relative cursor-pointer md:hidden -mx-8 -mt-24 px-8 pt-24 pb-6 bg-neutral-950">
+        <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase mb-3">
+          {label}
+        </p>
         <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-white mb-2">
           {title}
         </h2>
@@ -133,8 +142,8 @@ export default function AcademyBlock({ label, title, description }: Props) {
         </p>
       </div>
 
-      {/* Cards — top */}
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 flex-1">
+      {/* Cards */}
+      <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 flex-1 mt-4 md:mt-0">
         {CARDS.map((card, i) => (
           <div
             key={i}
@@ -144,17 +153,8 @@ export default function AcademyBlock({ label, title, description }: Props) {
           >
             <div
               ref={i === 0 ? cardInnerRef : undefined}
-              className="relative aspect-[5/2] md:aspect-[5/5] rounded-sm overflow-hidden bg-white/[0.04] border border-white/[0.06]"
+              className="relative aspect-[5/2] md:aspect-[5/5] rounded-sm overflow-hidden bg-neutral-950/70 md:bg-white/[0.04] md:border md:border-white/[0.06]"
             >
-
-              {/* Mobile: fixed portrait background — feels static as cards scroll over it */}
-              <div className="md:hidden absolute inset-0" style={{
-                backgroundImage: `url(${imgPortrait})`,
-                backgroundAttachment: "fixed",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }} />
 
               {/* Desktop: landscape triptych with parallax — height/top/left set by GSAP */}
               <div
@@ -170,8 +170,8 @@ export default function AcademyBlock({ label, title, description }: Props) {
                 }}
               />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
+              {/* Gradient overlay — desktop only */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
 
               {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-6 z-10">

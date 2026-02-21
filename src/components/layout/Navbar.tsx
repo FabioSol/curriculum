@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 
 const links = [
-  { label: "Work", to: "/work" },
-  { label: "Academy", to: "/academy" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
+  { label: "Work",     to: "/work" },
+  { label: "Academy",  to: "/academy" },
+  { label: "About",    to: "/about" },
+  { label: "Projects", to: "/projects" },
 ]
 
 export default function Navbar() {

@@ -7,7 +7,7 @@ import Home from "@/pages/Home"
 const Work = lazy(() => import("@/pages/Work"))
 const Academy = lazy(() => import("@/pages/Academy"))
 const About = lazy(() => import("@/pages/About"))
-const Contact = lazy(() => import("@/pages/Contact"))
+const Projects = lazy(() => import("@/pages/Projects"))
 
 function AppRoutes() {
   const { pathname } = useLocation()
@@ -22,10 +22,10 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route element={<PageWrapper />}>
-            <Route path="/work" element={<Work />} />
-            <Route path="/academy" element={<Academy />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/work"     element={<Work />} />
+            <Route path="/academy"  element={<Academy />} />
+            <Route path="/about"    element={<About />} />
+            <Route path="/projects" element={<Projects />} />
           </Route>
         </Routes>
       </Suspense>

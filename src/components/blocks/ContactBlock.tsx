@@ -1,5 +1,4 @@
 import { useRef, type ReactNode } from "react"
-import { useNavigate } from "react-router-dom"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -20,7 +19,6 @@ interface Props {
 }
 
 export default function ContactBlock({ label, heading, marqueeItems, links }: Props) {
-  const navigate = useNavigate()
   const sectionRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
   const lineRef = useRef<HTMLDivElement>(null)
@@ -109,17 +107,6 @@ export default function ContactBlock({ label, heading, marqueeItems, links }: Pr
               </a>
             ))}
           </div>
-
-          {/* CTA button */}
-          <button
-            onClick={() => navigate("/contact")}
-            className="group relative overflow-hidden bg-neutral-950 border border-white/20 px-10 py-4 w-fit"
-          >
-            <span className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-            <span className="relative font-mono text-xs tracking-[0.3em] uppercase text-white group-hover:text-neutral-950 transition-colors duration-500">
-              Get in touch
-            </span>
-          </button>
 
         </div>
       </div>
