@@ -13,10 +13,20 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom", "react-router-dom"],
-          "vendor-gsap": ["gsap", "@gsap/react"],
-          "vendor-motion": ["motion"],
+        manualChunks(id) {
+          if (id.includes("node_modules/gsap") || id.includes("node_modules/@gsap")) {
+            return "vendor-gsap"
+          }
+          if (id.includes("node_modules/motion")) {
+            return "vendor-motion"
+          }
+          if (
+            id.includes("node_modules/react-dom") ||
+            id.includes("node_modules/react-router") ||
+            id.includes("node_modules/react/")
+          ) {
+            return "vendor-react"
+          }
         },
       },
     },

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./Navbar"
-import { ScrollProgress } from "../../../components/motion-primitives/scroll-progress"
+import { ScrollProgress } from "../ui/scroll-progress"
 
 export default function PageWrapper() {
   return (
