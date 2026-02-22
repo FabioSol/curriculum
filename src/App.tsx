@@ -37,7 +37,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/curriculum">
+    <BrowserRouter>
       <AppRoutes />
     </BrowserRouter>
   )
