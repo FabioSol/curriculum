@@ -1,9 +1,12 @@
 import DummyBlock from "@/components/blocks/DummyBlock"
+import TravelBlock from "@/components/blocks/about/TravelBlock"
+import MuseumsBlock from "@/components/blocks/about/MuseumsBlock"
 
 export default function About() {
   return (
     <main className="bg-neutral-950">
-      <DummyBlock label="001 / Travel"  title="Where I've been." />
+      <TravelBlock />
+      <MuseumsBlock />
       <DummyBlock label="002 / Chess"   title="Three moves ahead." />
       <DummyBlock label="003 / Chess"   title="Three moves ahead." />
       <DummyBlock label="004 / Chess"   title="Three moves ahead." />

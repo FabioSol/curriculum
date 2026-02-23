@@ -8,14 +8,21 @@ import {
   ScrollVelocityContainer,
   ScrollVelocityRow,
 } from "@/components/ui/scroll-based-velocity"
-import img1 from "@/assets/images/about/img_1.webp"
-import img2 from "@/assets/images/about/img_2.webp"
-import img3 from "@/assets/images/about/img_3.webp"
-import img4 from "@/assets/images/about/img_4.webp"
+import elPenol from "@/assets/images/about/travel/el-penol-antioquia-colombia.webp"
+import comunaTrece from "@/assets/images/about/travel/comuna-trece-medellin.webp"
+import desiertoRojo from "@/assets/images/about/travel/desierto-rojo-tatacoa.webp"
+import catedralDeSal from "@/assets/images/about/travel/catedral-de-sal-zipaquira-colombia.webp"
+import tulcan from "@/assets/images/about/travel/tulcan-cementery-ecuador.webp"
+import jardin from "@/assets/images/about/travel/jardin-antioquia-colombia.webp"
+import elDorado from "@/assets/images/about/travel/el-dorado-guatavita-bogota.webp"
+import lagunaCocha from "@/assets/images/about/travel/laguna-de-la-cocha-narino-colombia.webp"
+import gato from "@/assets/images/about/museums/gato-botero.webp"
+import cabezaOlmeca from "@/assets/images/about/museums/cabeza-olmeca.webp"
+import apolo from "@/assets/images/about/museums/apolo-y-dafne-bernini.webp"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const images = [img1, img2, img3, img4]
+const images = [elPenol, comunaTrece, desiertoRojo, catedralDeSal, tulcan, jardin, elDorado, lagunaCocha, gato, cabezaOlmeca, apolo]
 
 const ROW_A = images
 const ROW_B = [...images].reverse()
