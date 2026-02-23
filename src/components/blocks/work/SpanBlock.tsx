@@ -41,8 +41,6 @@ export default function SpanBlock() {
           <p className="text-sm leading-relaxed text-white/75 flex-1 md:py-2">
             SPAN is a company genuinely committed to their engineers' growth. I collaborate across teams and regions, work on varied projects, and learn from brilliant people every day — the kind of environment that makes you better without you fully realizing it.
           </p>
-          <p className="text-sm leading-relaxed text-white/75 flex-1 md:py-2">
-          </p>
 
           {/* Right — role details */}
           <div className="flex flex-col gap-1 border-l border-white/20 pl-8 shrink-0">

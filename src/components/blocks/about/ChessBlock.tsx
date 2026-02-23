@@ -1,13 +1,32 @@
+import { useRef } from "react"
+import { useScroll, useTransform, motion } from "motion/react"
 import { Iphone } from "@/components/ui/iphone"
 import puzzlesPrime from "@/assets/images/about/chess/puzzles-prime.webp"
 
 export default function ChessBlock() {
-  return (
-    <section className="bg-neutral-950 min-h-screen flex items-center py-32 px-8 md:px-20">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-20 md:gap-28">
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] })
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
 
-        {/* Phone */}
-        <div className="w-48 md:w-56 shrink-0 dark">
+  return (
+    <section ref={sectionRef} className="bg-neutral-950 min-h-screen flex items-center py-32 px-8 md:px-20 relative">
+
+      {/* Mobile background iPhone — centered, natural size, faded, parallax */}
+      <div className="absolute inset-0 md:hidden overflow-hidden pointer-events-none">
+        <motion.div
+          style={{ y }}
+          className="absolute inset-0 flex items-center justify-center dark"
+        >
+          <div className="opacity-15 w-48">
+            <Iphone src={puzzlesPrime} />
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-20 md:gap-28">
+
+        {/* Phone — desktop only */}
+        <div className="hidden md:block w-56 shrink-0 dark">
           <Iphone src={puzzlesPrime} />
         </div>
 
