@@ -116,10 +116,30 @@ export default function AcademyBlock({ label, title, description }: Props) {
       ref={sectionRef}
       className="relative bg-neutral-950 h-auto md:h-[100dvh] flex flex-col justify-center px-8 md:px-20 py-24 md:py-0"
     >
-      {/* Mobile: full-bleed portrait background */}
+      {/* Mobile layout — full bleed portrait, text at bottom */}
       <div className="md:hidden absolute inset-0">
         <img src={imgPortrait} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/60 to-neutral-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/70 to-neutral-950/10" />
+      </div>
+
+      <div onClick={() => navigate("/academy")} className="relative cursor-pointer md:hidden flex flex-col justify-end min-h-screen pb-12 px-8">
+        <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase mb-4">
+          {label}
+        </p>
+        <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-white mb-3">
+          {title}
+        </h2>
+        <p className="text-white/40 text-sm leading-relaxed mb-8">
+          {description}
+        </p>
+        <div className="flex flex-col border-t border-white/10">
+          {CARDS.map((card, i) => (
+            <div key={i} className="flex items-baseline justify-between py-4 border-b border-white/10">
+              <span className="font-mono text-[10px] tracking-[0.25em] text-white/30 uppercase w-20 shrink-0">{card.degree}</span>
+              <span className="text-white font-semibold text-sm text-right">{card.title}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Label — desktop only, top left */}
@@ -129,21 +149,8 @@ export default function AcademyBlock({ label, title, description }: Props) {
         </p>
       </div>
 
-      {/* Heading — mobile only */}
-      <div onClick={() => navigate("/academy")} className="relative cursor-pointer md:hidden -mx-8 -mt-24 px-8 pt-24 pb-6 bg-neutral-950">
-        <p className="font-mono text-[10px] tracking-[0.3em] text-white/30 uppercase mb-3">
-          {label}
-        </p>
-        <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-white mb-2">
-          {title}
-        </h2>
-        <p className="text-white/40 text-sm leading-relaxed">
-          {description}
-        </p>
-      </div>
-
-      {/* Cards */}
-      <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 flex-1 mt-4 md:mt-0">
+      {/* Cards — desktop only */}
+      <div ref={gridRef} className="relative hidden md:grid grid-cols-3 gap-10 flex-1">
         {CARDS.map((card, i) => (
           <div
             key={i}
