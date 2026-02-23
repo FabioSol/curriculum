@@ -1,10 +1,11 @@
-import DummyBlock from "@/components/blocks/DummyBlock"
+import EarlyCareerBlock from "@/components/blocks/work/EarlyCareerBlock"
+import SpanBlock from "@/components/blocks/work/SpanBlock"
 
 export default function Work() {
   return (
     <main className="bg-neutral-950">
-      <DummyBlock label="001 / Early Career" title="Where it started." />
-      <DummyBlock label="002 / SPAN"         title="Building at scale." />
+      <EarlyCareerBlock />
+      <SpanBlock />
     </main>
   )
 }
