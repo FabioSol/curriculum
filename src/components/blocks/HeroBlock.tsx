@@ -32,6 +32,8 @@ export default function HeroBlock({ label, name, descriptor, scrollCue }: Props)
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-neutral-950">
+      {/* Preload hero image at highest priority */}
+      <link rel="preload" as="image" href={meImage} fetchPriority="high" />
 
       {/* Dithered portrait — full bleed background, taller than viewport for parallax travel */}
       <div ref={imageRef} className="absolute inset-x-0 -top-[15%] h-[130%]">

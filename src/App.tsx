@@ -13,14 +13,16 @@ const NotFound = lazy(() => import("@/pages/NotFound"))
 // Prefetch all lazy chunks non-blocking after initial render
 function Prefetch() {
   useEffect(() => {
-    const id = requestIdleCallback(() => {
+    const schedule = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200))
+    const cancel = window.cancelIdleCallback ?? clearTimeout
+    const id = schedule(() => {
       import("@/pages/Work")
       import("@/pages/Academy")
       import("@/pages/About")
       import("@/pages/Projects")
       import("@/pages/NotFound")
     })
-    return () => cancelIdleCallback(id)
+    return () => cancel(id)
   }, [])
   return null
 }
