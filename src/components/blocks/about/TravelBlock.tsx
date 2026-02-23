@@ -137,7 +137,12 @@ const images = [
 
 export default function TravelBlock() {
   return (
-    <ParallaxScene height={4000} className="bg-neutral-950" overlay={<h1 className="text-white text-6xl font-bold">Where I've been.</h1>}>
+    <ParallaxScene height={4000} className="bg-neutral-950" overlay={
+      <div className="flex flex-col items-center gap-4">
+        <p className="label text-white/30">002 / Travel</p>
+        <h1 className="text-white text-6xl font-bold">Where I've been.</h1>
+      </div>
+    }>
       {images.map(({ src, description, x, y, z, width, height }, i) => (
         <ParallaxItem key={i} z={z} x={x} y={y}>
           <ClickableImage

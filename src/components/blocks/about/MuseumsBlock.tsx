@@ -97,7 +97,12 @@ const images: { src: string; alt: string; description: string; width?: number; h
 
 export default function MuseumsBlock() {
   return (
-    <ParallaxScene height={4000} className="bg-neutral-950" overlay={<h1 className="text-white text-6xl font-bold">What I've seen.</h1>}>
+    <ParallaxScene height={4000} className="bg-neutral-950" overlay={
+      <div className="flex flex-col items-center gap-4">
+        <p className="label text-white/30">004 / Museums</p>
+        <h1 className="text-white text-6xl font-bold">What I've seen.</h1>
+      </div>
+    }>
       <ParallaxItem z={0.8} x="5%"  y="1%">  <ClickableImage src={apoloYDafne}        alt={images[0].alt}  height={340} description={images[0].description}  className="rounded-xl shadow-2xl cursor-pointer" /></ParallaxItem>
       <ParallaxItem z={0.3} x="52%" y="2%">  <ClickableImage src={amsterdamEnInvierno} alt={images[1].alt}  width={300}  description={images[1].description}  className="rounded-xl shadow-2xl cursor-pointer" /></ParallaxItem>
       <ParallaxItem z={0.6} x="28%" y="7%">  <ClickableImage src={cabezaHombreLlorando} alt={images[2].alt} height={320} description={images[2].description} className="rounded-xl shadow-2xl cursor-pointer" /></ParallaxItem>
