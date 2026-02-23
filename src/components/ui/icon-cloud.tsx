@@ -19,6 +19,8 @@ function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3)
 }
 
+const LOGICAL_SIZE = 400
+
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
@@ -46,36 +48,31 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
     const items = icons || images || []
     imagesLoadedRef.current = new Array(items.length).fill(false)
+    const dpr = window.devicePixelRatio || 1
+    const size = 40 * dpr
 
     const newIconCanvases = items.map((item, index) => {
       const offscreen = document.createElement("canvas")
-      offscreen.width = 40
-      offscreen.height = 40
+      offscreen.width = size
+      offscreen.height = size
       const offCtx = offscreen.getContext("2d")
 
       if (offCtx) {
         if (images) {
-          // Handle image URLs directly
           const img = new Image()
           img.crossOrigin = "anonymous"
           img.src = items[index] as string
           img.onload = () => {
-            offCtx.clearRect(0, 0, offscreen.width, offscreen.height)
-
-            // Create circular clipping path
+            offCtx.clearRect(0, 0, size, size)
             offCtx.beginPath()
-            offCtx.arc(20, 20, 20, 0, Math.PI * 2)
+            offCtx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2)
             offCtx.closePath()
             offCtx.clip()
-
-            // Draw the image
-            offCtx.drawImage(img, 0, 0, 40, 40)
-
+            offCtx.drawImage(img, 0, 0, size, size)
             imagesLoadedRef.current[index] = true
           }
         } else {
-          // Handle SVG icons
-          offCtx.scale(0.4, 0.4)
+          offCtx.scale(0.4 * dpr, 0.4 * dpr)
           const svgString = renderToString(item as React.ReactElement)
           const img = new Image()
           img.src = "data:image/svg+xml;base64," + btoa(svgString)
@@ -143,8 +140,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const rotatedZ = icon.x * sinY + icon.z * cosY
       const rotatedY = icon.y * cosX + rotatedZ * sinX
 
-      const screenX = canvasRef.current!.width / 2 + rotatedX
-      const screenY = canvasRef.current!.height / 2 + rotatedY
+      const screenX = LOGICAL_SIZE / 2 + rotatedX
+      const screenY = LOGICAL_SIZE / 2 + rotatedY
 
       const scale = (rotatedZ + 200) / 300
       const radius = 20 * scale
@@ -214,11 +211,16 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     const ctx = canvas?.getContext("2d")
     if (!canvas || !ctx) return
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = LOGICAL_SIZE * dpr
+    canvas.height = LOGICAL_SIZE * dpr
+    ctx.scale(dpr, dpr)
 
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
+    const animate = () => {
+      ctx.clearRect(0, 0, LOGICAL_SIZE, LOGICAL_SIZE)
+
+      const centerX = LOGICAL_SIZE / 2
+      const centerY = LOGICAL_SIZE / 2
       const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY)
       const dx = mousePos.x - centerX
       const dy = mousePos.y - centerY
@@ -244,8 +246,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         }
       } else if (!isDragging) {
         rotationRef.current = {
-          x: rotationRef.current.x + (dy / canvas.height) * speed,
-          y: rotationRef.current.y + (dx / canvas.width) * speed,
+          x: rotationRef.current.x + (dy / LOGICAL_SIZE) * speed,
+          y: rotationRef.current.y + (dx / LOGICAL_SIZE) * speed,
         }
       }
 
@@ -263,7 +265,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
 
         ctx.save()
-        ctx.translate(canvas.width / 2 + rotatedX, canvas.height / 2 + rotatedY)
+        ctx.translate(LOGICAL_SIZE / 2 + rotatedX, LOGICAL_SIZE / 2 + rotatedY)
         ctx.scale(scale, scale)
         ctx.globalAlpha = opacity
 
@@ -305,8 +307,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   return (
     <canvas
       ref={canvasRef}
-      width={400}
-      height={400}
+      style={{ width: LOGICAL_SIZE, height: LOGICAL_SIZE }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
