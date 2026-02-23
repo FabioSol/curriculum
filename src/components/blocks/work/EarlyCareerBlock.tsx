@@ -122,7 +122,7 @@ export default function EarlyCareerBlock() {
       <div className="px-8 md:px-20 mb-16">
         <p className="label text-white/30 mb-6">001 / Early Career</p>
         <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-white max-w-xl">
-          Where it started.
+          Early experience.
         </h2>
       </div>
 

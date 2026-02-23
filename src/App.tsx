@@ -25,6 +25,12 @@ function Prefetch() {
   return null
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
 function AppRoutes() {
   const { pathname } = useLocation()
   const [loaded, setLoaded] = useState(false)
@@ -32,6 +38,7 @@ function AppRoutes() {
 
   return (
     <>
+      <ScrollToTop />
       {isHome && !loaded && <Loader onComplete={() => setLoaded(true)} />}
 
       <Suspense fallback={null}>

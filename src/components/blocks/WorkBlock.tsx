@@ -85,7 +85,7 @@ export default function WorkBlock({ label, title, description }: Props) {
           </div>
 
           {/* Text side — right */}
-          <div onClick={() => navigate("/work")} className="flex flex-col justify-center cursor-pointer">
+          <div className="flex flex-col justify-center">
             <p className="font-mono text-[10px] tracking-[0.3em] text-neutral-400 uppercase mb-8">
               {label}
             </p>
@@ -95,6 +95,20 @@ export default function WorkBlock({ label, title, description }: Props) {
             <p className="text-neutral-500 text-sm leading-relaxed max-w-sm mb-16">
               {description}
             </p>
+            <div className="flex gap-4">
+              <button
+                onClick={() => navigate("/work")}
+                className="text-sm font-medium text-neutral-950 border border-neutral-950 px-5 py-2.5 rounded-full hover:bg-neutral-950 hover:text-white transition-colors duration-200"
+              >
+                Experience ↗
+              </button>
+              <button
+                onClick={() => navigate("/projects")}
+                className="text-sm font-medium text-neutral-500 border border-neutral-300 px-5 py-2.5 rounded-full hover:border-neutral-950 hover:text-neutral-950 transition-colors duration-200"
+              >
+                Projects ↗
+              </button>
+            </div>
           </div>
 
         </div>
