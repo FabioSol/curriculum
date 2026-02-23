@@ -33,9 +33,9 @@ export default function Home() {
         heading={<>Let's<br /><span className="text-white/20 italic font-light">create</span><br />together.</>}
         marqueeItems={["Get in touch", "Let's talk", "Say hello", "Work together", "Open to opportunities"]}
         links={[
-          { label: "LinkedIn", href: "#" },
-          { label: "GitHub",   href: "#" },
-          { label: "Email",    href: "#" },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/fabio-solorzano-flores/" },
+          { label: "GitHub",   href: "https://github.com/FabioSol" },
+          { label: "Email",    href: "mailto:fabioso2231@gmail.com" },
         ]}
       />
     </main>
