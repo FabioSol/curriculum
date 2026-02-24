@@ -92,7 +92,7 @@ export default function WorkBlock({ label, title, description }: Props) {
             <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-neutral-950 mb-8">
               {title}
             </h2>
-            <p className="text-neutral-500 text-sm leading-relaxed max-w-sm mb-16">
+            <p className="text-neutral-500 text-sm leading-relaxed max-w-sm mb-8">
               {description}
             </p>
             <div className="flex gap-4">

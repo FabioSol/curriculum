@@ -3,10 +3,12 @@ import AboutBlock from "@/components/blocks/AboutBlock"
 import WorkBlock from "@/components/blocks/WorkBlock"
 import AcademyBlock from "@/components/blocks/AcademyBlock"
 import ContactBlock from "@/components/blocks/ContactBlock"
+import Navbar from "@/components/layout/Navbar"
 
 export default function Home() {
   return (
     <main className="bg-neutral-950">
+      <Navbar />
       <HeroBlock
         label="001 / Portfolio"
         name="Fabio Sol"
