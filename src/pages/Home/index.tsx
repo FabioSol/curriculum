@@ -18,7 +18,6 @@ export default function Home() {
       <WorkBlock
             label="002 / Work"
             title="Professional experience."
-            description="Some of the languages, frameworks, and tools I've worked with across career and personal projects."
       />
       <AcademyBlock
             label="003 / Academy"

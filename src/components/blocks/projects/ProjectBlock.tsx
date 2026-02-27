@@ -7,6 +7,7 @@ interface ProjectLink {
 }
 
 interface ProjectBlockProps {
+  id?: string
   index: number
   title: string
   description: string
@@ -17,6 +18,7 @@ interface ProjectBlockProps {
 }
 
 export default function ProjectBlock({
+  id,
   index,
   title,
   description,
@@ -38,7 +40,7 @@ export default function ProjectBlock({
   }
 
   return (
-    <section className="min-h-screen bg-neutral-950 flex flex-col md:flex-row">
+    <section id={id} className="min-h-screen bg-neutral-950 flex flex-col md:flex-row">
 
       {/* Screenshot panel */}
       <div className={`w-full md:w-[60%] shrink-0 flex flex-col bg-neutral-900 ${imageOnRight ? "md:order-2" : "md:order-1"}`}>

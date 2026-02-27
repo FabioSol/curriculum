@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import ProjectsIntroBlock from "@/components/blocks/projects/ProjectsIntroBlock"
 import ProjectBlock from "@/components/blocks/projects/ProjectBlock"
 
@@ -12,6 +14,7 @@ import lykeion3 from "@/assets/images/projects/lykeion-screenshot-3.webp"
 
 const projects = [
   {
+    id: "ailookup",
     title: "AiLookUp",
     description:
       "An early RAG application that lets you load a CSV and query it with natural language. Embeddings are generated with Sentence-BERT and results are retrieved semantically — no cloud dependency, runs fully local.",
@@ -20,6 +23,7 @@ const projects = [
     links: [{ label: "github.com/FabioSol/AiLookUp", href: "https://github.com/FabioSol/AiLookUp" }],
   },
   {
+    id: "annotations",
     title: "Annotations App",
     description:
       "Built to support a clinical study on pantomographies. Radiologists annotate DICOM images served via GridFS, with data collected into MongoDB. Containerized and deployed on Kubernetes.",
@@ -27,6 +31,7 @@ const projects = [
     screenshots: [annotations1, annotations2],
   },
   {
+    id: "risk-analysis",
     title: "Risk Analysis Class Tools",
     description:
       "A collection of interactive tools for students studying complex risk models. Built to develop intuition through hands-on exploration rather than passive reading.",
@@ -35,6 +40,7 @@ const projects = [
     links: [{ label: "risk-analysis-class-tools.vercel.app", href: "https://risk-analysis-class-tools.vercel.app/" }],
   },
   {
+    id: "lykeion",
     title: "Lykeion",
     description:
       "A Hugo theme built around a strict set of readability principles. Negative interface, high typographic discipline, zero framework dependencies — just HTML, CSS, and JS. A deliberate constraint to sharpen fundamentals.",
@@ -45,6 +51,18 @@ const projects = [
 ]
 
 export default function Projects() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    const id = hash.slice(1)
+    if (!id) return
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView()
+      })
+    })
+  }, [hash])
+
   return (
     <main className="bg-neutral-950">
       <ProjectsIntroBlock />

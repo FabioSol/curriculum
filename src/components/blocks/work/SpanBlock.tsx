@@ -11,7 +11,7 @@ export default function SpanBlock() {
   const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"])
 
   return (
-    <section className="min-h-screen flex flex-col justify-center px-8 md:px-20 py-18" style={{ backgroundColor: SPAN_ORANGE }}>
+    <section id="span" className="min-h-screen flex flex-col justify-center px-8 md:px-20 py-18" style={{ backgroundColor: SPAN_ORANGE }}>
       <div className="max-w-5xl mx-auto w-full flex flex-col gap-12">
 
         {/* Top — label + logo */}
