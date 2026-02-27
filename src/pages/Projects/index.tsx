@@ -14,21 +14,13 @@ import lykeion3 from "@/assets/images/projects/lykeion-screenshot-3.webp"
 
 const projects = [
   {
-    id: "ailookup",
-    title: "AiLookUp",
+    id: "lykeion",
+    title: "Lykeion",
     description:
-      "An early RAG application that lets you load a CSV and query it with natural language. Embeddings are generated with Sentence-BERT and results are retrieved semantically — no cloud dependency, runs fully local.",
-    tech: ["Python", "Sentence-BERT", "Peewee", "PyQt5"],
-    screenshots: [aiLookUp1, aiLookUp2],
-    links: [{ label: "github.com/FabioSol/AiLookUp", href: "https://github.com/FabioSol/AiLookUp" }],
-  },
-  {
-    id: "annotations",
-    title: "Annotations App",
-    description:
-      "Built to support a clinical study on pantomographies. Radiologists annotate DICOM images served via GridFS, with data collected into MongoDB. Containerized and deployed on Kubernetes.",
-    tech: ["Next.js", "TypeScript", "Flask", "MongoDB", "GridFS", "Docker", "Kubernetes", "Uvicorn"],
-    screenshots: [annotations1, annotations2],
+      "A Hugo theme built around a strict set of readability principles. Negative interface, high typographic discipline, zero framework dependencies — just HTML, CSS, and JS. A deliberate constraint to sharpen fundamentals.",
+    tech: ["Hugo", "HTML", "CSS", "JavaScript"],
+    screenshots: [lykeion1, lykeion2, lykeion3],
+    links: [{ label: "fabiosol.github.io/Lykeion", href: "https://fabiosol.github.io/Lykeion/" }],
   },
   {
     id: "risk-analysis",
@@ -40,13 +32,21 @@ const projects = [
     links: [{ label: "risk-analysis-class-tools.vercel.app", href: "https://risk-analysis-class-tools.vercel.app/" }],
   },
   {
-    id: "lykeion",
-    title: "Lykeion",
+    id: "annotations",
+    title: "Annotations App",
     description:
-      "A Hugo theme built around a strict set of readability principles. Negative interface, high typographic discipline, zero framework dependencies — just HTML, CSS, and JS. A deliberate constraint to sharpen fundamentals.",
-    tech: ["Hugo", "HTML", "CSS", "JavaScript"],
-    screenshots: [lykeion1, lykeion2, lykeion3],
-    links: [{ label: "fabiosol.github.io/Lykeion", href: "https://fabiosol.github.io/Lykeion/" }],
+      "Built to support a clinical study on pantomographies. Radiologists annotate DICOM images served via GridFS, with data collected into MongoDB. Containerized and deployed on Kubernetes.",
+    tech: ["Next.js", "TypeScript", "Flask", "MongoDB", "GridFS", "Docker", "Kubernetes", "Uvicorn"],
+    screenshots: [annotations1, annotations2],
+  },
+  {
+    id: "ailookup",
+    title: "AiLookUp",
+    description:
+      "An early RAG application that lets you load a CSV and query it with natural language. Embeddings are generated with Sentence-BERT and results are retrieved semantically — no cloud dependency, runs fully local.",
+    tech: ["Python", "Sentence-BERT", "Peewee", "PyQt5"],
+    screenshots: [aiLookUp1, aiLookUp2],
+    links: [{ label: "github.com/FabioSol/AiLookUp", href: "https://github.com/FabioSol/AiLookUp" }],
   },
 ]
 
