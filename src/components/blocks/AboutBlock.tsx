@@ -19,13 +19,17 @@ import lagunaCocha from "@/assets/images/about/travel/laguna-de-la-cocha-narino-
 import gato from "@/assets/images/about/museums/gato-botero.webp"
 import cabezaOlmeca from "@/assets/images/about/museums/cabeza-olmeca.webp"
 import apolo from "@/assets/images/about/museums/apolo-y-dafne-bernini.webp"
+import rodin from "@/assets/images/about/museums/la-eterna-primavera-auguste-rodin.webp"
+import picasso from "@/assets/images/about/museums/craneo-de-cabra-sobre-mesa-pablo-picasso.webp"
+import monet from "@/assets/images/about/museums/amsterdam-en-invierno-Monet.webp"
+import boteroFlores from "@/assets/images/about/museums/flores-botero.webp"
+import giacometti from "@/assets/images/about/museums/alberto-giacometti-1961.webp"
+import museoOro from "@/assets/images/about/museums/museo-del-oro-2-pectoral-ceremonial.webp"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const images = [elPenol, comunaTrece, desiertoRojo, catedralDeSal, tulcan, jardin, elDorado, lagunaCocha, gato, cabezaOlmeca, apolo]
-
-const ROW_A = images
-const ROW_B = [...images].reverse()
+const ROW_A = [elPenol, comunaTrece, desiertoRojo, catedralDeSal, tulcan, jardin, elDorado, lagunaCocha]
+const ROW_B = [gato, cabezaOlmeca, apolo, rodin, picasso, monet, boteroFlores, giacometti, museoOro]
 
 interface Props {
   label: string

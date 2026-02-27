@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
 import useClickOutside from "@/components/ui/useClickOutside"
+import { Lens } from "@/components/ui/lens"
 
 function ImageLightbox({ src, alt, description, onClose }: {
   src: string
@@ -35,12 +36,14 @@ function ImageLightbox({ src, alt, description, onClose }: {
         exit={{ opacity: 0, y: 16 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
       >
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-auto object-contain"
-          style={{ maxHeight: "70vh" }}
-        />
+        <Lens zoomFactor={2} lensSize={150} ariaLabel={alt}>
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: "70vh" }}
+          />
+        </Lens>
         {description && (
           <p className="px-5 py-4 text-sm text-neutral-400 leading-relaxed shrink-0">{description}</p>
         )}
