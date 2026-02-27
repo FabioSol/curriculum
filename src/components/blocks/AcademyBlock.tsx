@@ -12,9 +12,9 @@ import imgPortrait from "@/assets/images/academy/portrait-academy.webp"
 const GAP = 40 // px, matches gap-10
 
 const CARDS = [
-  { title: "Financial Engineering", degree: "BS",        imageLeft: "0px" },
-  { title: "Data Science",          degree: "MS",        imageLeft: `calc(-100% - ${GAP}px)` },
-  { title: "Risk Analysis",         degree: "Professor", imageLeft: `calc(-200% - ${GAP * 2}px)` },
+  { title: "Financial Engineering", degree: "BS",        imageLeft: "0px",                       anchor: "financial-engineering" },
+  { title: "Data Science",          degree: "MS",        imageLeft: `calc(-100% - ${GAP}px)`,     anchor: "data-science" },
+  { title: "Risk Analysis",         degree: "Professor", imageLeft: `calc(-200% - ${GAP * 2}px)`, anchor: "risk-analysis" },
 ]
 
 interface Props {
@@ -134,7 +134,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
         </p>
         <div className="flex flex-col border-t border-white/10">
           {CARDS.map((card, i) => (
-            <div key={i} className="flex items-baseline justify-between py-4 border-b border-white/10">
+            <div key={i} onClick={(e) => { e.stopPropagation(); navigate(`/academy#${card.anchor}`) }} className="flex items-baseline justify-between py-4 border-b border-white/10">
               <span className="font-mono text-[10px] tracking-[0.25em] text-white/30 uppercase w-20 shrink-0">{card.degree}</span>
               <span className="text-white font-semibold text-sm text-right">{card.title}</span>
             </div>
@@ -155,7 +155,7 @@ export default function AcademyBlock({ label, title, description }: Props) {
           <div
             key={i}
             ref={(el) => { if (el) cardsRef.current[i] = el }}
-            onClick={() => navigate("/academy")}
+            onClick={() => navigate(`/academy#${card.anchor}`)}
             className="cursor-pointer"
           >
             <div

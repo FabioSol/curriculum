@@ -118,7 +118,7 @@ export default function EarlyCareerBlock() {
   const chunks = Array.from({ length: 4 }, (_, i) => cards.slice(i * chunkSize, (i + 1) * chunkSize))
 
   return (
-    <section className="bg-neutral-950 pt-32 overflow-hidden">
+    <section className="bg-neutral-950 pt-32 overflow-hidden h-dvh">
       <div className="px-8 md:px-20 mb-16">
         <p className="label text-white/30 mb-6">001 / Early Career</p>
         <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-white max-w-xl">
