@@ -15,20 +15,20 @@ export default function Home() {
         descriptor="Software Engineer · Professor · Data Scientist"
         scrollCue="Scroll to explore"
       />
-      <AboutBlock
-        label="002 / About"
-        title="More than hobbies."
-        description="Beyond the screen, I'm drawn to things that demand patience and presence — learning a new chord, calculating three moves ahead, losing myself in a museum, or landing somewhere I've never been before. Art, guitar, chess, and travel are less hobbies and more the way I think."
-      />
       <WorkBlock
-        label="003 / Work"
-        title="Professional experience."
-        description="Some of the languages, frameworks, and tools I've worked with across career and personal projects."
+            label="002 / Work"
+            title="Professional experience."
+            description="Some of the languages, frameworks, and tools I've worked with across career and personal projects."
       />
       <AcademyBlock
-        label="004 / Academy"
-        title="Where it all started."
-        description="A path through financial engineering, data science, and risk — each step building on the last."
+            label="003 / Academy"
+            title="Where it all started."
+            description="A path through financial engineering, data science, and risk — each step building on the last."
+      />
+      <AboutBlock
+        label="004 / About"
+        title="More than hobbies."
+        description="Beyond the screen, I'm drawn to things that demand patience and presence — learning a new chord, calculating three moves ahead, losing myself in a museum, or landing somewhere I've never been before. Art, guitar, chess, and travel are less hobbies and more the way I think."
       />
       <ContactBlock
         label="005 / Contact"

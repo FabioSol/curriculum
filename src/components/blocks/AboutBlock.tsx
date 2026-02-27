@@ -36,7 +36,6 @@ interface Props {
 export default function AboutBlock({ label, title, description }: Props) {
   const navigate = useNavigate()
   const sectionRef = useRef<HTMLElement>(null)
-  const innerRef = useRef<HTMLDivElement>(null)
   const rowARef = useRef<HTMLDivElement>(null)
   const rowBRef = useRef<HTMLDivElement>(null)
 
@@ -44,7 +43,14 @@ export default function AboutBlock({ label, title, description }: Props) {
     const section = sectionRef.current
     if (!section) return
 
-    // Row A: slides in from right, slides out to left
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top top",
+      end: "+=150%",
+      pin: true,
+      scrub: 0.5,
+    })
+
     gsap.fromTo(rowARef.current,
       { x: "120%" },
       {
@@ -53,26 +59,11 @@ export default function AboutBlock({ label, title, description }: Props) {
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
-          end: "top 50%",
+          end: "top top",
           scrub: 3,
         },
       }
     )
-    gsap.fromTo(rowARef.current,
-      { x: "0%" },
-      {
-        x: "-120%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "bottom 50%",
-          end: "bottom top",
-          scrub: 3,
-        },
-      }
-    )
-
-    // Row B: slides in from left, slides out to right
     gsap.fromTo(rowBRef.current,
       { x: "-120%" },
       {
@@ -81,55 +72,16 @@ export default function AboutBlock({ label, title, description }: Props) {
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
-          end: "top 50%",
+          end: "top top",
           scrub: 3,
-        },
-      }
-    )
-    gsap.fromTo(rowBRef.current,
-      { x: "0%" },
-      {
-        x: "120%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "bottom 50%",
-          end: "bottom top",
-          scrub: 3,
-        },
-      }
-    )
-    // Fade out as WorkBlock pins in behind
-    const inner = innerRef.current
-    if (!inner) return
-
-    gsap.fromTo(inner,
-      { opacity: 1, pointerEvents: "auto" },
-      {
-        opacity: 0,
-        pointerEvents: "none",
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "bottom 50%",
-          end: "bottom -20%",
-          scrub: 0.5,
-        onLeave: () => {
-          gsap.set(section, { height: section.offsetHeight, zIndex: 0 })
-          gsap.set(inner, { display: "none" })
-        },
-        onEnterBack: () => {
-          gsap.set(inner, { display: "block", opacity: 0 })
-          gsap.set(section, { height: "auto", zIndex: 20 })
-        },
         },
       }
     )
   })
 
   return (
-    <section ref={sectionRef} className="sticky top-0 z-20 bg-neutral-950">
-      <div ref={innerRef} className="relative py-24 md:py-36 overflow-x-hidden">
+    <section ref={sectionRef} className="relative bg-neutral-950">
+      <div className="relative py-24 md:py-36 overflow-x-hidden">
 
       {/* Scroll velocity image strips — absolute background on mobile, normal flow on desktop */}
       <div className="absolute inset-0 md:relative md:inset-auto pointer-events-none md:pointer-events-auto">
